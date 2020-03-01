@@ -7,6 +7,7 @@ module.exports = (sequelize, type) => sequelize.define('user', {
     },
     login: {
         type: type.STRING,
+        primaryKey: true,
         allowNull: false
     },
     password: {
