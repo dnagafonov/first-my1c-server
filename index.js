@@ -6,7 +6,9 @@ const server = require('express')();
 const serverHostName = '127.0.0.1';
 const serverPort = 8000;
 const usersRouter = require('./api/users/get');
+const cors = require('cors');
 
+server.use(cors());
 server.use(`/users`, usersRouter);
 
 const sqlConnection = new Sequelize(DB_NAME, DB_LOGIN, DB_PASSWORD, {
@@ -18,4 +20,4 @@ sqlConnection.sync().catch(e => console.error(e.message));
 
 server.listen(serverPort, serverHostName, () => {
     console.log(`\nServer started ${serverHostName}:${serverPort} at ${new Date()}\n`)
-})
+})  
