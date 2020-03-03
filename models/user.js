@@ -1,17 +1,19 @@
-module.exports = (sequelize, type) => sequelize.define('user', {
-    id: {
-        type: type.INTEGER,
-        primaryKey: true,
-        allowNull: false,
-        autoIncrement: true
-    },
-    login: {
-        type: type.STRING,
-        primaryKey: true,
-        allowNull: false
-    },
-    password: {
-        type: type.STRING,
-        allowNull: false
-    }
-});
+const sequelize = require('sequelize');
+
+const UsersTable = (sqlconnection) => {
+    return sqlconnection.define('user', {
+        login: {
+            primaryKey: true,
+            type: sequelize.STRING,
+            allowNull: false
+        },
+        password: {
+            type: sequelize.STRING,
+            allowNull: false
+        }
+    })
+};
+
+module.exports = {
+    UsersTable,
+};
